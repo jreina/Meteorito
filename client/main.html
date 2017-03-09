@@ -1,0 +1,12 @@
+<head>
+  <title>meteorito</title>
+</head>
+
+<template name="MainLayout">
+    {{>Header}}
+    <div class="container">
+        <div class="clearfix inner-content">
+            {{> Template.dynamic template=main}}
+        </div>
+    </div>
+</template>

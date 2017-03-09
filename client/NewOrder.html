@@ -1,0 +1,8 @@
+<template name="NewOrder">
+    <div class="panel panel-default">
+        <div class="panel-heading">New Order</div>
+        <div class="panel-body">
+            {{> quickForm collection="Orders" id="new-order" type="method" meteormethod="order.create"}}
+        </div>
+    </div>
+</template>
