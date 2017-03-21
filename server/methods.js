@@ -1,5 +1,5 @@
 Meteor.methods({
-    'order.create': (doc) => {
+    'order.create': function(doc) {
         Orders.insert(doc);
     }
 });

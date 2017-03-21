@@ -1,12 +1,15 @@
 const AppData = {
-    IngredientOptions: [
-                "Cheese",
-                "Sausage",
-                "Eggs",
-                "Bacon",
-                "Ham",
-                "Salsa"
-    ]
+    IngredientOptions: {
+        "Cheese": "",
+        "Sausage": "",
+        "Eggs": "",
+        "Bacon": "",
+        "Ham": "",
+        "Salsa": "",
+        "Hot Sauce": "glyphicon glyphicon-fire",
+        "Barbacoa": "",
+        "Chicharróns": ""
+    }
 };
 
 Schemas = {};
@@ -26,7 +29,7 @@ Schemas.IngredientSchema = new SimpleSchema({
         type: String,
         label: "Ingredient",
         autoform: {
-            options: AppData.IngredientOptions.map(function(i) { return { label: i, value: i}; })
+            options: Object.keys(AppData.IngredientOptions).map(function(i) { return { label: i, value: i}; })
         },
         optional: false
     },
@@ -47,15 +50,43 @@ Schemas.BurritoSchema = new SimpleSchema({
 });
 
 Schemas.OrderSchema = new SimpleSchema({
-    name: {
-        type: String,
-        label: "Name",
-        optional: false
-    },
     burritos: {
         type: [Schemas.BurritoSchema],
         label: "Burritos",
         optional: false
+    },
+    created: {
+        type: Date,
+        autoValue: function() {
+            return new Date();
+        },
+        optional: true,
+        label: "Created",
+        autoform: {
+            type: "hidden"
+        }
+    },
+    user: {
+        type: String,
+        label: "Username",
+        autoValue: function() {
+            return Meteor.user() === null? 'Stranger McDanger': Meteor.user().username;
+        },
+        optional: false,
+        autoform: {
+            type: "hidden"
+        }
+    },
+    userId: {
+        type: String,
+        label: "UserId",
+        autoValue: function() {
+            return this.userId;
+        },
+        optional: true,
+        autoform: {
+            type: "hidden"
+        }
     }
 });
 

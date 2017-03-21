@@ -3,10 +3,13 @@
 </head>
 
 <template name="MainLayout">
-    {{>Header}}
+    {{> Octo}}
+    {{> Header}}
     <div class="container">
-        <div class="clearfix inner-content">
-            {{> Template.dynamic template=main}}
-        </div>
+    {{#if currentUser}}
+        {{> Template.dynamic template=main}}
+    {{else}}
+        {{> NotSignedIn}}
+    {{/if}}
     </div>
 </template>

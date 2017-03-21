@@ -1,27 +1,34 @@
 <template name="Orders">
-{{#each order in orders}}
-    <div class="panel panel-default">
-        <div class="panel-heading">Order for {{order.name}}</div>
-        <div class="panel-body">
-            <div class="panel-group" id="order-group">
-            {{#let orderIndex=@index}}
-            {{#each burrito in order.burritos}}
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title" data-toggle="collapse" data-target="#burrito-{{orderIndex}}-{{@index}}">
-                            Burrito #{{incrementByOne @index}}
-                        </h4>
-                    </div>
-                    <ul class="list-group collapse" id="burrito-{{orderIndex}}-{{@index}}">
-                    {{#each ingredient in burrito.ingredients}}
-                        <li class="list-group-item">{{ingredient.count}} - {{ingredient.ingredient}}</li>
+    <div class="row">
+    {{#each order in orders}}
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Order for <span class="{{#if isStranger order.user}}text-danger{{/if}}">{{order.user}}</span></div>
+                <div class="panel-body">
+                    <div class="panel-group" id="order-group">
+                    {{#let orderIndex=@index}}
+                    {{#each burrito in order.burritos}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title" data-toggle="collapse" data-target="#burrito-{{orderIndex}}-{{@index}}">
+                                    Burrito #{{incrementByOne @index}}
+                                </h4>
+                            </div>
+                            <ul class="list-group collapse" id="burrito-{{orderIndex}}-{{@index}}">
+                            {{#each ingredient in burrito.ingredients}}
+                                <li class="list-group-item">{{ingredient.count}} - <span class="{{icon ingredient.ingredient}}"></span>{{ingredient.ingredient}}<span class="{{icon ingredient.ingredient}}"></span></li>
+                            {{/each}}
+                            </ul>
+                        </div>
                     {{/each}}
-                    </ul>
+                    {{/let}}
+                    </div>
+                    {{#if order.created}}<small><strong>Submitted: </strong>{{asLocal order.created}}</small>{{/if}}
                 </div>
-            {{/each}}
-            {{/let}}
             </div>
         </div>
+        {{else}}
+        {{> NoOrders}}
+    {{/each}}
     </div>
-{{/each}}
 </template>

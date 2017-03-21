@@ -13,8 +13,11 @@
                 </div>
                 <div class="collapse navbar-collapse" id="header-nav-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a data-toggle="collapse" data-target="#header-nav-collapse" href="/">New Order</a></li>
+                        <li><a data-toggle="collapse" data-target="#header-nav-collapse" href="/">New <span class="hidden">World </span>Order</a></li>
                         <li><a data-toggle="collapse" data-target="#header-nav-collapse" href="/orders">Orders</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {{#if currentUser}}{{> loginButtons}}{{/if}}
                     </ul>
                 </div>
             </div>
