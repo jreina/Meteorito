@@ -3,14 +3,16 @@
     {{#each order in orders}}
         <div class="col-md-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Order for <span class="{{#if isStranger order.user}}text-danger{{/if}}">{{order.user}}</span></div>
-                <div class="panel-body">
+                <div class="panel-heading" data-toggle="collapse" data-target="#order-{{@index}}">
+                    Order for <span class="{{#if isStranger order.user}}text-danger{{/if}}">{{order.user}}</span>
+                </div>
+                <div class="panel-body collapse in" id="order-{{@index}}">
                     <div class="panel-group" id="order-group">
                     {{#let orderIndex=@index}}
                     {{#each burrito in order.burritos}}
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title" data-toggle="collapse" data-target="#burrito-{{orderIndex}}-{{@index}}">
+                            <div class="panel-heading" data-toggle="collapse" data-target="#burrito-{{orderIndex}}-{{@index}}">
+                                <h4 class="panel-title">
                                     Burrito #{{incrementByOne @index}}
                                 </h4>
                             </div>
