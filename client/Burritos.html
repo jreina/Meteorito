@@ -1,0 +1,25 @@
+<template name="Burritos">
+    <div class="row">
+        {{#each burrito in burritos}}
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#burrito-{{orderIndex}}-{{@index}}">
+                        <h4 class="panel-title">
+                            Burrito for {{burrito.user}}
+                        </h4>
+                    </div>
+                    <ul class="list-group collapse in" id="burrito-{{orderIndex}}-{{@index}}">
+                    {{#each ingredient in flatten burrito}}
+                        <li class="list-group-item">{{ingredient}} <span class="{{icon ingredient}}"></span><span class="{{icon ingredient}}"></span><span class="{{icon ingredient}}"></span></li>
+                    {{/each}}
+                    <li class="list-group-item"><span class="text-success">Paying with {{burrito.payment}}</span></li>
+                    <li class="list-group-item">Notes: {{asLocal burrito.notes}}</li>
+                    <li class="list-group-item">{{asLocal burrito.created}}</li>
+                    </ul>
+                </div>
+            </div>
+        {{else}}
+            {{> NoBurritos}}
+        {{/each}}
+    </div>
+</template>

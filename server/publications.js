@@ -1,1 +1,1 @@
-Meteor.publish('orders', () => Orders.find());
+Meteor.publish('burritos', () => Burritos.find());

@@ -1,4 +1,12 @@
 <template name="NewOrder">
-    <h2>New order for {{ currentUser.username }}</h2>
-    {{> quickForm collection="Orders" id="new-order" type="method" meteormethod="order.create" template="bootstrap-horizontal"}}
+    <div class="col-md-5 col-centered">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">New burrito for {{ currentUser.username }}</h2>
+            </div>
+            <div class="panel-body">
+                {{> quickForm collection="Burritos" id="new-order" type="method" meteormethod="burrito.create" template="bootstrap"}}
+            </div>
+        </div>
+    </div>
 </template>

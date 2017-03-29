@@ -1,5 +1,5 @@
 Meteor.methods({
-    'order.create': function(doc) {
-        Orders.insert(doc);
+    'burrito.create': function(doc) {
+        Burritos.insert(doc);
     }
 });

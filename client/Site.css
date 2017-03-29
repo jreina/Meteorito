@@ -1,0 +1,17 @@
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+q {
+  quotes: "“" "”" "‘" "’";
+}
+q:before {
+    content: open-quote;
+}
+q:after {
+    content: close-quote;
+}
+.motivation strong {
+    display: block;
+    text-align: right;
+}
